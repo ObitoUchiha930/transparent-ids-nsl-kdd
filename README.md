@@ -23,6 +23,7 @@
 | `cicids_cv_and_conflicts.py` | تحقق متقاطع بـ 5 طيات + بحث تعارض التسميات + تقرير `output/cicids_cv_report.txt` |
 | `output/cicids_report.txt` | تقرير عيّنة CIC-IDS2017 (70/30): المقاييس وF1 لكل فئة ومصفوفة الالتباس |
 | `output/cicids_cv_report.txt` | تقرير التحقق المتقاطع (5 طيات) وفحص تعارض التسميات |
+| `output/cicids_sample_report.txt` | تقرير بناء العينة (يُولَّد بـ make_cicids_sample.py) |
 | `output/` | كل المخرجات: تقارير، رسوم، نماذج |
 | `data/` | البيانات الخام (مُستثناة من git) |
 
@@ -327,6 +328,8 @@ U2R            43       0        1        3       18         65
 | العينة | كل صفوف الفئات التي عددها أقل من 5,000، و5,000 عشوائيًا كحد أقصى لكل فئة أخرى (`random_state=42`): 49,183 صفًا (1.74% من المجموع) في 15 فئة |
 | حذف المكرر | حُذف 5,560 صفًا (11.30%) فبقي 43,623. التكرار كان في الفئات الكبيرة (مثل SSH-Patator: 2,263 من 5,000) والفئات الصغيرة لم تتأثر |
 | العمود المكرر | `Fwd Header Length.1` مطابق للعمود `Fwd Header Length` في 100% من الصفوف فحُذف، فالميزات 77 |
+
+التقرير الكامل لمرحلة التنظيف وأخذ العينة (عدد الصفوف المقروءة والمحذوفة والمحتفَظ بها لكل فئة) محفوظ في [output/cicids_sample_report.txt](output/cicids_sample_report.txt)، ويُعاد توليده بتشغيل `python make_cicids_sample.py`.
 
 ### النتائج
 النموذج: HistGradientBoostingClassifier مع `class_weight='balanced'` و`random_state=42`.

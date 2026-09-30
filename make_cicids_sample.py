@@ -22,7 +22,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(ROOT, "data", "cicids2017")
 CSV_DIR = os.path.join(DATA_DIR, "MachineLearningCVE")
 OUT_PATH = os.path.join(DATA_DIR, "sample.csv")
-REPORT_PATH = os.path.join(DATA_DIR, "sample_report.txt")
+REPORT_PATH = os.path.join(ROOT, "output", "cicids_sample_report.txt")
 
 CAP = 5_000          # الحد الأقصى لصفوف أي فئة
 CHUNK = 100_000      # حجم الدفعة عند القراءة
@@ -30,6 +30,11 @@ RANDOM_STATE = 42
 FLUSH_AT = 2 * CAP   # عند بلوغ ضعف الحد، نُنقّي الخزّان عشوائيًا (=2×CAP ذاكرة كحد أقصى للفئة)
 
 LABEL_COL_CLEAN = "Label"
+
+
+def rel(path):
+    """مسار نسبي بالنسبة لجذر المشروع (يمنع طباعة اسم المستخدم والمسار الكامل)."""
+    return os.path.relpath(path, ROOT).replace("\\", "/")
 
 
 # ---------------------------------------------------------------------------
@@ -232,8 +237,8 @@ def main():
         lines.append(text)
 
     log("CIC-IDS2017 — بناء عيّنة")
-    log(f"مجلد المصدر: {CSV_DIR}")
-    log(f"ملف الوجهة : {OUT_PATH}")
+    log(f"مجلد المصدر: {rel(CSV_DIR)}")
+    log(f"ملف الوجهة : {rel(OUT_PATH)}")
 
     csv_files = csv_file_list()
     before, total_read, dropped, inf_only, pre_nan = survey(csv_files, log)
@@ -267,13 +272,14 @@ def main():
 
     sample.to_csv(OUT_PATH, index=False, encoding="utf-8")
     log("")
-    log(f"حُفظت العيّنة : {OUT_PATH}")
+    log(f"حُفظت العيّنة : {rel(OUT_PATH)}")
     log(f"الحجم         : {os.path.getsize(OUT_PATH):,} بايت "
         f"({os.path.getsize(OUT_PATH) / 1024 / 1024:.2f} MB)")
 
+    os.makedirs(os.path.dirname(REPORT_PATH), exist_ok=True)
     with open(REPORT_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
-    log(f"حُفظ التقرير  : {REPORT_PATH} ({os.path.getsize(REPORT_PATH):,} بايت)")
+    log(f"حُفظ التقرير  : {rel(REPORT_PATH)} ({os.path.getsize(REPORT_PATH):,} بايت)")
     log("")
     log("لم يُدرَّب أي نموذج. لم يُستخدم git.")
 
