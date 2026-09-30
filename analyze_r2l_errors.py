@@ -30,6 +30,13 @@ TOP_SHAP = 5
 REPORT_TXT = os.path.join(OUT, "r2l_error_analysis.txt")
 COMPARE_PNG = os.path.join(OUT, "shap_r2l_missed_vs_caught.png")
 
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
+
+def rel(path):
+    """مسار نسبي بالنسبة لجذر المشروع (يمنع طباعة اسم المستخدم والمسار الكامل)."""
+    return os.path.relpath(path, ROOT).replace("\\", "/")
+
 NORMAL_I = CLASS_INDEX["normal"]
 R2L_I = CLASS_INDEX["R2L"]
 NUMERIC = [c for c in COLUMNS[:41] if c not in CATEGORICAL]
@@ -225,7 +232,7 @@ def main():
     fig.tight_layout()
     fig.savefig(COMPARE_PNG, dpi=120, bbox_inches="tight")
     plt.close(fig)
-    out(f"\n  تم حفظ الرسم المقارن: {COMPARE_PNG}")
+    out(f"\n  تم حفظ الرسم المقارن: {rel(COMPARE_PNG)}")
 
     # 5) أنواع هجمات R2L التي تتركز فيها الفائتة
     out("\n" + "=" * 104)

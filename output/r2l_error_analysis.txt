@@ -58,7 +58,7 @@
     4  dst_host_diff_srv_rate                 +0.0474     -0.0079     +0.0554
     5  protocol_type_icmp                     +0.0444     +0.1066     -0.0622
 
-  تم حفظ الرسم المقارن: C:\Users\Utshi\Downloads\ids-project\output\shap_r2l_missed_vs_caught.png
+  تم حفظ الرسم المقارن: output/shap_r2l_missed_vs_caught.png
 
 ========================================================================================================
 4) أنواع هجمات R2L التي تتركز فيها الفائتة (من العمود label الأصلي)
