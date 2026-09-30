@@ -1,0 +1,5 @@
+model,accuracy,precision_attack,recall_attack,f1_attack,fn,tp,fp,tn,fit_seconds
+HistGradientBoosting,0.8092,0.97,0.686,0.8037,4029,8804,272,9439,2.6
+ExtraTrees(200),0.7904,0.9667,0.6543,0.7804,4436,8397,289,9422,5.9
+"RandomForest(200,balanced)",0.7768,0.9685,0.6283,0.7622,4770,8063,262,9449,5.1
+RandomForest(200),0.7677,0.9676,0.6123,0.75,4975,7858,263,9448,4.6

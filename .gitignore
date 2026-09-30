@@ -1,0 +1,20 @@
+# البيانات الحجمية: تُنزَّل عبر download_data.py ولا تُضَف إلى المستودع
+data/
+
+# النماذج المدربة (حتى 18.8 MB لكل نموذج) — تُولَّد عبر train.py و explain.py
+output/*.joblib
+
+# بايتون
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# أسرار
+.env
+.env.*
+
+# نظام التشغيل / المحررات
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini

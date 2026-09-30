@@ -1,0 +1,40 @@
+|--- src_bytes <= 28.50
+|   |--- service_http <= 0.50
+|   |   |--- dst_bytes <= 3.50
+|   |   |   |--- logged_in <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- logged_in >  0.50
+|   |   |   |   |--- class: 0
+|   |   |--- dst_bytes >  3.50
+|   |   |   |--- dst_host_rerror_rate <= 0.09
+|   |   |   |   |--- class: 0
+|   |   |   |--- dst_host_rerror_rate >  0.09
+|   |   |   |   |--- class: 1
+|   |--- service_http >  0.50
+|   |   |--- dst_host_same_srv_rate <= 0.31
+|   |   |   |--- dst_host_count <= 41.00
+|   |   |   |   |--- class: 0
+|   |   |   |--- dst_host_count >  41.00
+|   |   |   |   |--- class: 1
+|   |   |--- dst_host_same_srv_rate >  0.31
+|   |   |   |--- dst_host_srv_serror_rate <= 0.59
+|   |   |   |   |--- class: 0
+|   |   |   |--- dst_host_srv_serror_rate >  0.59
+|   |   |   |   |--- class: 1
+|--- src_bytes >  28.50
+|   |--- service_ecr_i <= 0.50
+|   |   |--- hot <= 0.50
+|   |   |   |--- dst_host_srv_diff_host_rate <= 0.11
+|   |   |   |   |--- class: 0
+|   |   |   |--- dst_host_srv_diff_host_rate >  0.11
+|   |   |   |   |--- class: 0
+|   |   |--- hot >  0.50
+|   |   |   |--- src_bytes <= 11454.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- src_bytes >  11454.50
+|   |   |   |   |--- class: 1
+|   |--- service_ecr_i >  0.50
+|   |   |--- src_bytes <= 292.00
+|   |   |   |--- class: 0
+|   |   |--- src_bytes >  292.00
+|   |   |   |--- class: 1
